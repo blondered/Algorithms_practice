@@ -1,10 +1,7 @@
-from sys import stdin
-
-
-def main(input):
+def main(N):
     pass
 
 
 if __name__ == "__main__":
-    input = stdin
-    main(input)
+    N = int(input())
+    main(N)
