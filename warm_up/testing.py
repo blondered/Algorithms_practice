@@ -1,1 +1,1 @@
-print(int(0.4 + 0.5))
+print(list(range(100, 1, -1)))

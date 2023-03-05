@@ -13,5 +13,6 @@ def main(coord):
 
 
 if __name__ == "__main__":
+    n = int(input())
     coord =  list(map(int, input().split()))
     main(coord)
