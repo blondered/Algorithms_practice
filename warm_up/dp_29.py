@@ -11,8 +11,8 @@ def main(N, prices):
         dp_line = []
         plus_one = []
         for num_coupons in range(N):
-            if prices[day] > 100:
-            
+            # if prices[day] > 100:
+                
 
 
 
