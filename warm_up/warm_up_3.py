@@ -1,5 +1,4 @@
-# 10
-# [5, 10, 20]
+# Bin search
 
 from sys import stdin
 

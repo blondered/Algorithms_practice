@@ -1,43 +1,55 @@
 # graphs
+# Матрица смежности
 # DFS
-# Циклы
+# Цикл в неориентированном графе
+"""
+Дан неориентированный граф. Требуется определить, есть ли в нем цикл, и, если есть, вывести его.
+
+Формат ввода
+В первой строке дано одно число n — количество вершин в графе ( 1 ≤ n ≤ 500 ). Далее в n строках 
+задан сам граф матрицей смежности.
+
+Формат вывода
+Если в иcходном графе нет цикла, то выведите «NO». Иначе, в первой строке выведите «YES», во второй 
+строке выведите число k — количество вершин в цикле, а в третьей строке выведите k различных чисел —
+ номера вершин, которые принадлежат циклу в порядке обхода (обход можно начинать с любой вершины 
+ цикла). Если циклов несколько, то выведите любой.
 """
 
-"""
+from sys import setrecursionlimit
 
-def dfs(graph: list, components: list, now: int, N: int, component: int, parent: int, hist: list):
+def dfs(graph: list, colors: list, now: int, parent: int, ans: list):
     """
     Depth first search
     """
-    hist.append(now+1)
-    is_cycled = False
-    components[now] = component
-    neighbours = [node for node in range(N) if graph[now][node] == 1]
-    for neigh in neighbours:
-        if neigh == parent:
-            continue
-        if components[neigh] == -1:
-            dfs(graph, components, neigh, N, component, now, hist)
-        else:
-            is_cycled = True
-    return is_cycled
+    colors[now] = 1
+    for i in range(N):
+        if graph[now][i] == 1 and parent != i:
+            if colors[i] == 0:
+                is_cycled = dfs(graph, colors, i, now, ans)
+                if is_cycled:
+                    if now == ans[0]:
+                        print("YES")
+                        print(len(ans))
+                        print(*[node + 1 for node in ans])
+                        exit(0)
+                    ans.append(now)
+                    return True
+            elif colors[i] == 1:
+                ans.append(i)
+                ans.append(now)
+                return True
+    
+    colors[now] = 2
+    return False
 
 def main(N, graph):
-    components = [-1 for _ in range(N)]
-    component = 0
+    setrecursionlimit(100000)
+    colors = [0 for _ in range(N)]
+    ans = []
     for node in range(N):
-        if components[node] == -1:
-            history = []
-            is_cycled = dfs(graph, components, node, N, component, -1, history)
-            if is_cycled:
-                print("YES")
-                print(len(history))
-                print(*history)
-                # cycled_nodes = [i+1 for i in range(N) if components[i] == component]
-                # print(len(cycled_nodes))
-                # print(*cycled_nodes)
-                return
-        component += 1
+        if colors[node] == 0:
+            dfs(graph, colors, node, -1, ans)
     print("NO")
 
 if __name__ == "__main__":
