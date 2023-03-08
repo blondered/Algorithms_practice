@@ -1,50 +1,39 @@
-class Maximum:
-    value = 1
+# 2 указателя
+"""
+Красотой строки назовем максимальное число идущих подряд одинаковых букв. (красота строки 
+abcaabdddettq равна 3)
 
-    @classmethod
-    def check_maximum(self, new_maximum):
-        self.value = max(self.value, new_maximum)
+Сделайте данную вам строку как можно более красивой, если вы можете сделать не более k операций 
+замены символа.
 
+Формат ввода
+В первой строке записано одно целое число k (0 ≤ k ≤ 109)
 
-class Letter:
-    def __init__(self, jokers_limit):
-        self.num_met = 0
-        self.jokers_used = 0
-        self.jokers_limit = jokers_limit
+Во второй строке дана непустая строчка S (|S| ≤ 2 ⋅ 105). Строчка S состоит только из маленьких 
+латинских букв.
 
-    def add_meeting_different(self):
-        if self.jokers_used == self.jokers_limit:
-            Maximum.check_maximum(self.num_met)
-            self.num_met = 0
-            self.jokers_used = 0
-            return
-        self.jokers_used += 1
-        self.num_met += 1
-
-    def add_meeting_same(self):
-        self.num_met += 1
-
-
+Формат вывода
+Выведите одно число — максимально возможную красоту строчки, которую можно получить.
+"""
 def main(k, S):
 
     len_s = len(S)
     ans = k
     for letter in "abcdefghijklmnopqrstuvwxyz":
-        for start in range(len_s-k):
-            pretty = 0
-            now = start
-            used = 0
-            while now < len_s:
-                if S[now] != letter:
-                    if used == k:
-                        break
+        left = 0
+        right = 0
+        used = 0
+        while left < len_s and right < len_s:
+            ans = max(ans, right - left)
+            if S[right] != letter:
+                if used == k:
+                    left += 1
+                    while S[left-1] == letter:
+                        left += 1
+                else:
                     used += 1
-                pretty += 1
-                now += 1
-            ans = max(ans, pretty)
-
+            right += 1
     print(ans)
-
 
 
 if __name__ == "__main__":
