@@ -26,18 +26,25 @@ class Letter:
 
 
 def main(k, S):
-    letters = {}
-    for letter in S:
-        if letter not in letters:
-            letters[letter] = Letter(jokers_limit=k)
-        letters[letter].add_meeting_same()
-        for any_letter_key, any_letter_object in letters.items():
-            if any_letter_key != letter:
-                any_letter_object.add_meeting_different()
-    for any_letter_object in letters.values():
-        Maximum.check_maximum(
-            any_letter_object.num_met + k - any_letter_object.jokers_used
-        )
+
+    len_s = len(S)
+    for i in range(len_s):
+
+        letters = {}
+        s_limited = S[i:]
+    
+        for letter in s_limited:
+            if letter not in letters:
+                letters[letter] = Letter(jokers_limit=k)
+            letters[letter].add_meeting_same()
+            for any_letter_key, any_letter_object in letters.items():
+                if any_letter_key != letter:
+                    any_letter_object.add_meeting_different()
+        for any_letter_object in letters.values():
+            Maximum.check_maximum(
+                any_letter_object.num_met + k - any_letter_object.jokers_used
+            )
+
     print(min(Maximum.value, len(S)))
 
 
