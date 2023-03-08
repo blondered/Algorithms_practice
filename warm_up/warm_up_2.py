@@ -28,24 +28,23 @@ class Letter:
 def main(k, S):
 
     len_s = len(S)
-    for i in range(len_s):
+    ans = k
+    for letter in "abcdefghijklmnopqrstuvwxyz":
+        for start in range(len_s-k):
+            pretty = 0
+            now = start
+            used = 0
+            while now < len_s:
+                if S[now] != letter:
+                    if used == k:
+                        break
+                    used += 1
+                pretty += 1
+                now += 1
+            ans = max(ans, pretty)
 
-        letters = {}
-        s_limited = S[i:]
-    
-        for letter in s_limited:
-            if letter not in letters:
-                letters[letter] = Letter(jokers_limit=k)
-            letters[letter].add_meeting_same()
-            for any_letter_key, any_letter_object in letters.items():
-                if any_letter_key != letter:
-                    any_letter_object.add_meeting_different()
-        for any_letter_object in letters.values():
-            Maximum.check_maximum(
-                any_letter_object.num_met + k - any_letter_object.jokers_used
-            )
+    print(ans)
 
-    print(min(Maximum.value, len(S)))
 
 
 if __name__ == "__main__":
