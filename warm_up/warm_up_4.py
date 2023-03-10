@@ -33,11 +33,13 @@
 
 """
 
+
 def order_to_place(order) -> tuple:
-    return (order + 1) // 2 , 2 - order % 2
+    return (order + 1) // 2, 2 - order % 2
+
 
 def main(N, K, row, first):
-    people_before_peter = (row - 1) * 2 + (first-1)
+    people_before_peter = (row - 1) * 2 + (first - 1)
     peter_var = people_before_peter % K + 1
     front_place_order = people_before_peter + 1 - K
     back_place_order = people_before_peter + 1 + K

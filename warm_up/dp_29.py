@@ -28,12 +28,13 @@
 заглянуть в это кафе). Если таких решений несколько, выведите любое из них.
 """
 
+
 def main(N, prices):
     if N == 0:
         print(0)
-        print(0,0)
+        print(0, 0)
         exit(0)
-    day_one = [50000 for _ in range(N+1)]
+    day_one = [50000 for _ in range(N + 1)]
     if prices[0] > 100:
         day_one[1] = prices[0]
     else:
@@ -43,11 +44,15 @@ def main(N, prices):
         dp_line = []
         for num_coupons in range(N):
             if prices[day] > 100 and num_coupons > 0:
-                dp_line.append(min(dp[-1][num_coupons+1], dp[-1][num_coupons-1] + prices[day]))
+                dp_line.append(
+                    min(dp[-1][num_coupons + 1], dp[-1][num_coupons - 1] + prices[day])
+                )
             elif prices[day] > 100 and num_coupons == 0:
-                dp_line.append(dp[-1][num_coupons+1])
+                dp_line.append(dp[-1][num_coupons + 1])
             else:
-                dp_line.append(min(dp[-1][num_coupons+1], dp[-1][num_coupons] + prices[day]))
+                dp_line.append(
+                    min(dp[-1][num_coupons + 1], dp[-1][num_coupons] + prices[day])
+                )
         dp_line.append(50000)
         dp.append(dp_line)
 
@@ -57,14 +62,17 @@ def main(N, prices):
         if money <= min_money:
             min_money = money
             left_coupons = num_coupons
-    
+
     now_coupons = left_coupons
     used_coupons = 0
     days_coupons = []
-    for day in range(N-1, 0, -1):
-        if dp[day][now_coupons] == dp[day-1][now_coupons + 1] and dp[day][now_coupons] != 50000:
+    for day in range(N - 1, 0, -1):
+        if (
+            dp[day][now_coupons] == dp[day - 1][now_coupons + 1]
+            and dp[day][now_coupons] != 50000
+        ):
             used_coupons += 1
-            days_coupons.append(day+1)
+            days_coupons.append(day + 1)
             now_coupons += 1
         elif prices[day] > 100:
             now_coupons -= 1

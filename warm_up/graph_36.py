@@ -30,7 +30,6 @@ def main(N, graph, A, B):
                 steps[node] = steps[prev] + 1
         head += 1
     print(steps[B])
-    
 
 
 if __name__ == "__main__":
@@ -40,4 +39,4 @@ if __name__ == "__main__":
         graph_line = list(map(int, input().split()))
         graph.append(graph_line)
     A, B = list(map(int, input().split()))
-    main(N, graph, A-1, B-1)
+    main(N, graph, A - 1, B - 1)

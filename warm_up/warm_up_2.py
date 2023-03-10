@@ -15,6 +15,8 @@ abcaabdddettq равна 3)
 Формат вывода
 Выведите одно число — максимально возможную красоту строчки, которую можно получить.
 """
+
+
 def main(k, S):
 
     len_s = len(S)
@@ -28,7 +30,7 @@ def main(k, S):
             if S[right] != letter:
                 if used == k:
                     left += 1
-                    while S[left-1] == letter:
+                    while S[left - 1] == letter:
                         left += 1
                 else:
                     used += 1

@@ -18,6 +18,7 @@
 последовательностей несколько, необходимо вывести ровно одну (любую) из них.
 """
 
+
 def main(N, M, coord):
     dp = []
     dp_line = [coord[0][0]]
@@ -26,9 +27,9 @@ def main(N, M, coord):
     dp.append(dp_line)
 
     for i in range(1, N):
-        dp_line = [dp[i-1][0]+coord[i][0]]
+        dp_line = [dp[i - 1][0] + coord[i][0]]
         for j in range(1, M):
-            dp_line.append(max(dp_line[j-1], dp[i-1][j])+coord[i][j])
+            dp_line.append(max(dp_line[j - 1], dp[i - 1][j]) + coord[i][j])
         dp.append(dp_line)
 
     print(dp[-1][-1])
@@ -37,7 +38,7 @@ def main(N, M, coord):
     i = N - 1
     j = M - 1
     while i > 0 and j > 0:
-        if dp[i-1][j] >= dp[i][j-1]:
+        if dp[i - 1][j] >= dp[i][j - 1]:
             path.append("D")
             i -= 1
         else:
@@ -49,6 +50,7 @@ def main(N, M, coord):
         ending = ["D"] * i
     path.extend(ending)
     print(*path[::-1])
+
 
 if __name__ == "__main__":
     N, M = list(map(int, input().split()))

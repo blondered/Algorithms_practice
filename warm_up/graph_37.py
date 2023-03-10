@@ -33,19 +33,18 @@ def main(N, graph, A, B):
     print(steps[B])
 
     if steps[B] > 0:
-        ans = [B+1]
+        ans = [B + 1]
         path = steps[B]
         now = B
         while True:
             for node, is_neigh in enumerate(graph[now]):
                 if is_neigh == 1 and steps[node] == path - 1:
-                    ans.append(node+1)
+                    ans.append(node + 1)
                     now = node
                     path -= 1
                     if path == 0:
                         print(*ans[::-1])
                         exit(0)
-        
 
 
 if __name__ == "__main__":
@@ -55,4 +54,4 @@ if __name__ == "__main__":
         graph_line = list(map(int, input().split()))
         graph.append(graph_line)
     A, B = list(map(int, input().split()))
-    main(N, graph, A-1, B-1)
+    main(N, graph, A - 1, B - 1)

@@ -11,14 +11,14 @@
 Выведите эти числа в порядке неубывания.
 """
 
+
 class Heap:
     values = []
     size = 0
 
-
     def get_left_child(self, node):
         return 2 * node + 1
-    
+
     def get_parent(self, node):
         return (node - 1) // 2
 
@@ -38,14 +38,19 @@ class Heap:
             if left_child >= self.size:
                 break
             son = left_child
-            if left_child + 1 < self.size and self.values[left_child] < self.values[left_child +1]:
+            if (
+                left_child + 1 < self.size
+                and self.values[left_child] < self.values[left_child + 1]
+            ):
                 son += 1  # right child exists and is bigger the left
             if self.values[son] > self.values[node]:
-                self.values[node], self.values[son] = self.values[son], self.values[node]
+                self.values[node], self.values[son] = (
+                    self.values[son],
+                    self.values[node],
+                )
                 node = son
             else:
                 break
-   
 
     def pop_max(self, return_value=False):
         answer = self.values[0]

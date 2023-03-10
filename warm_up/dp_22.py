@@ -14,6 +14,7 @@
 последней.
 """
 
+
 def sum_last_k(dp, k):
     ans = 0
     for i in range(1, k + 1):
@@ -34,7 +35,7 @@ def main(N, k):
         dp.append(ans)
 
     if N <= k:
-        print(dp[N-1])
+        print(dp[N - 1])
     else:
         for i in range(N - k - 1):
             ans = sum_last_k(dp, k)

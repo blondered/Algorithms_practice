@@ -29,6 +29,7 @@
 станцию B невозможно, программа должна вывести одно число –1 (минус один).
 """
 
+
 def main(N, M, stations, A, B):
     graph = [[] for line in range(M)]
     for station, lines in stations.items():
@@ -60,10 +61,11 @@ def main(N, M, stations, A, B):
         head += 1
     print(-1)
 
+
 if __name__ == "__main__":
     N = int(input())
     M = int(input())
-    stations = {i: [] for i in range(1, N+1)}
+    stations = {i: [] for i in range(1, N + 1)}
     for line_num in range(M):
         line = list(map(int, input().split()))
         for station in line[1:]:

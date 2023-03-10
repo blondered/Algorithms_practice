@@ -19,8 +19,9 @@
 Содержит одно число - минимальное значение суммы длин путей или -1, если сбор невозможен.
 """
 
+
 def main(N, M, S, T, Q, goals):
-    steps = [[-1 for j in range(M+1)] for i in range(N+1)]
+    steps = [[-1 for j in range(M + 1)] for i in range(N + 1)]
     steps[S][T] = 0
     queue = [(S, T)]
     head = 0
@@ -31,12 +32,18 @@ def main(N, M, S, T, Q, goals):
         neighs = []
         for delta_x, delta_y in jumps:
             new_x, new_y = x + delta_x, y + delta_y
-            if new_x > 0 and new_x <= N and new_y > 0 and new_y <= M and steps[new_x][new_y] == -1:
+            if (
+                new_x > 0
+                and new_x <= N
+                and new_y > 0
+                and new_y <= M
+                and steps[new_x][new_y] == -1
+            ):
                 neighs.append((new_x, new_y))
                 steps[new_x][new_y] = steps[x][y] + 1
         head += 1
         queue.extend(neighs)
-    
+
     ans = 0
     for x, y in goals:
         goal_steps = steps[x][y]
@@ -47,7 +54,7 @@ def main(N, M, S, T, Q, goals):
 
     print(ans)
 
-        
+
 if __name__ == "__main__":
     N, M, S, T, Q = list(map(int, input().split()))
     goals = []

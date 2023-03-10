@@ -17,6 +17,7 @@
 """
 import sys
 
+
 def dfs(graph: list, now: int, component: int, components: list):
     """
     Depth first search
@@ -27,21 +28,22 @@ def dfs(graph: list, now: int, component: int, components: list):
             dfs(graph, neigh, component, components)
     return
 
+
 def main(N, M, ways):
     sys.setrecursionlimit(100000)
-    graph = [[] for _ in range(N+1)]
+    graph = [[] for _ in range(N + 1)]
     for way in ways:
         graph[way[0]].append(way[1])
         graph[way[1]].append(way[0])
-    components = [0 for _ in range(N+1)]
+    components = [0 for _ in range(N + 1)]
     component = 1
-    for node in range(1, N+1):
+    for node in range(1, N + 1):
         if components[node] == 0:
             dfs(graph, node, component, components)
             component += 1
-    print(component-1)
+    print(component - 1)
     ans = [[] for _ in range(component)]
-    for node in range(1, N+1):
+    for node in range(1, N + 1):
         ans[components[node]].append(node)
     for component in ans[1:]:
         print(len(component))

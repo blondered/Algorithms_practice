@@ -19,6 +19,8 @@
 Формат вывода
 Вывести одно число - длину пути до поверхности.
 """
+
+
 def main(N, graph, beg):
     if beg[0] == 0:
         print(0)
@@ -45,14 +47,13 @@ def main(N, graph, beg):
                         print(steps[now[0]][now[1]][now[2]] + 1)
                         return
                     neighs.append(poss_neigh)
-        
+
         for neigh in neighs:
             z, y, x = neigh
             steps[z][y][x] = steps[now[0]][now[1]][now[2]] + 1
             queue.append(neigh)
-        
+
         head += 1
-    
 
 
 if __name__ == "__main__":

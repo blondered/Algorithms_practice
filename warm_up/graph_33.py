@@ -24,6 +24,7 @@
 группы - выведите YES; иначе выведите NO.
 """
 
+
 def dfs(graph: list, colors: list, now: int, color: int):
     """
     Depth first search
@@ -37,16 +38,18 @@ def dfs(graph: list, colors: list, now: int, color: int):
             exit(0)
     return
 
+
 def main(N, M, ways):
-    graph = [[] for _ in range(N+1)]
+    graph = [[] for _ in range(N + 1)]
     for way in ways:
         graph[way[0]].append(way[1])
         graph[way[1]].append(way[0])
-    colors = [0 for _ in range(N+1)]
-    for node in range(1, N+1):
+    colors = [0 for _ in range(N + 1)]
+    for node in range(1, N + 1):
         if colors[node] == 0:
             dfs(graph, colors, node, 1)
     print("YES")
+
 
 if __name__ == "__main__":
     N, M = list(map(int, input().split()))

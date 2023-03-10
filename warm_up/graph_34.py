@@ -17,6 +17,7 @@
 """
 from sys import setrecursionlimit
 
+
 def dfs(graph: list, colors: list, now: int, path: list):
     """
     Depth first search
@@ -32,14 +33,15 @@ def dfs(graph: list, colors: list, now: int, path: list):
     path.append(now)
     return
 
+
 def main(N, M, ways):
     setrecursionlimit(100000)
-    graph = [[] for _ in range(N+1)]
+    graph = [[] for _ in range(N + 1)]
     for way in ways:
         graph[way[0]].append(way[1])
-    colors = [0 for _ in range(N+1)]
+    colors = [0 for _ in range(N + 1)]
     path = []
-    for node in range(1, N+1):
+    for node in range(1, N + 1):
         if colors[node] == 0:
             dfs(graph, colors, node, path)
     print(*path[::-1])

@@ -18,6 +18,7 @@
 
 from sys import setrecursionlimit
 
+
 def dfs(graph: list, colors: list, now: int, parent: int, ans: list):
     """
     Depth first search
@@ -39,9 +40,10 @@ def dfs(graph: list, colors: list, now: int, parent: int, ans: list):
                 ans.append(i)
                 ans.append(now)
                 return True
-    
+
     colors[now] = 2
     return False
+
 
 def main(N, graph):
     setrecursionlimit(100000)
@@ -51,6 +53,7 @@ def main(N, graph):
         if colors[node] == 0:
             dfs(graph, colors, node, -1, ans)
     print("NO")
+
 
 if __name__ == "__main__":
     N = int(input())

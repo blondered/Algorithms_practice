@@ -14,9 +14,9 @@
 if __name__ == "__main__":
     N = int(input())
     min_x = 10**9
-    max_x = 0-10**9
+    max_x = 0 - 10**9
     min_y = 10**9
-    max_y = 0-10**9    
+    max_y = 0 - 10**9
     for _ in range(N):
         x, y = list(map(int, input().split()))
         min_x = min(min_x, x)

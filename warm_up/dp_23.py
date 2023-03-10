@@ -16,6 +16,7 @@
 последнее N. Если решений несколько, выведите любое.
 """
 
+
 def main(N):
     if N == 1:
         print(0)
@@ -31,7 +32,7 @@ def main(N):
             for var in (2, 3):
                 new_num = num // var
                 new_count = num % var + 1 + prev_count
-                    
+
                 if (
                     new_num == 0
                     or new_count >= ans
@@ -41,12 +42,12 @@ def main(N):
 
                 new_history = list(prev)
                 for _ in range(num % var):
-                    new_history.append(new_history[-1]-1)
+                    new_history.append(new_history[-1] - 1)
                 new_history.append(new_num)
 
                 if new_num > 1:
                     new_di[new_num] = (new_count, new_history)
-                    
+
                 elif new_count < ans:
                     ans = new_count
                     ans_history = new_history
@@ -55,7 +56,6 @@ def main(N):
 
     print(ans)
     print(*ans_history[::-1])
-
 
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@
 
 def main(N, M):
     dp = []
-    dp_line = [1] + [0] * (M-1)
+    dp_line = [1] + [0] * (M - 1)
     dp.append(dp_line)
     for i in range(1, N):
         dp_line = [0]

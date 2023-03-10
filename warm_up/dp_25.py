@@ -1,18 +1,34 @@
+# Dynamic programming
+
+"""
+В дощечке в один ряд вбиты гвоздики. Любые два гвоздика можно соединить ниточкой. Требуется 
+соединить некоторые пары гвоздиков ниточками так, чтобы к каждому гвоздику была привязана хотя бы 
+одна ниточка, а суммарная длина всех ниточек была минимальна.
+
+Формат ввода
+В первой строке входных данных записано число N — количество гвоздиков (2 ≤ N ≤ 100). В следующей 
+строке заданы N чисел — координаты всех гвоздиков (неотрицательные целые числа, не превосходящие 
+10000).
+
+Формат вывода
+Выведите единственное число — минимальную суммарную длину всех ниточек.
+"""
 def main(coord):
     numbers = sorted(coord)
-    dp_back = [numbers[1]-numbers[0]]
-    dp_free = [numbers[1]-numbers[0]]
-    for i in range(1, len(numbers)-2):
-        new_len = numbers[i+1] - numbers[i]
-        dp_back.append(dp_free[i-1] + new_len)
-        dp_free.append(dp_back[i-1])
-    ans = min(dp_back[-1], dp_free[-1])
+    free = [0, numbers[1] - numbers[0]]
+    back_done = [0, numbers[1] - numbers[0]]
+    i = 2
+    while i < len(numbers) - 1:
+        back_done.append(free[i-1] + numbers[i] - numbers[i-1])
+        free.append(min(back_done[i], back_done[i-1]))
+        i += 1
+    ans = free[i-1]
     if len(numbers) > 2:
-        ans += numbers[-1] - numbers[-2]
+        ans += numbers[i] - numbers[i-1]
     print(ans)
 
 
 if __name__ == "__main__":
     n = int(input())
-    coord =  list(map(int, input().split()))
+    coord = list(map(int, input().split()))
     main(coord)

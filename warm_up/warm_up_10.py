@@ -32,6 +32,7 @@
 
 """
 
+
 def main(word):
     count = {}
     limit = len(word)
@@ -42,7 +43,7 @@ def main(word):
         count[letter] += add
     letters = sorted(count.keys())
     for letter in letters:
-        print(letter, ": ", count[letter], sep = "")
+        print(letter, ": ", count[letter], sep="")
 
 
 if __name__ == "__main__":

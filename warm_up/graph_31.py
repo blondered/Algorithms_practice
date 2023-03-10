@@ -17,6 +17,7 @@
 возрастания номеров.
 """
 
+
 def dfs(graph: list, visited: list, now: int):
     """
     Depth first search
@@ -27,15 +28,16 @@ def dfs(graph: list, visited: list, now: int):
             dfs(graph, visited, neigh)
     return
 
+
 def main(N, M, ways):
-    graph = [[] for _ in range(N+1)]
+    graph = [[] for _ in range(N + 1)]
     for way in ways:
         graph[way[0]].append(way[1])
         graph[way[1]].append(way[0])
-    visited = [False for _ in range(N+1)]
+    visited = [False for _ in range(N + 1)]
     dfs(graph, visited, 1)
     print(sum(visited))
-    ans = [i for i in range(N+1) if visited[i]]
+    ans = [i for i in range(N + 1) if visited[i]]
     print(*sorted(ans))
 
 
