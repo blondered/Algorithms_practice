@@ -57,7 +57,7 @@ class Heap:
             else:
                 break
 
-    def pop_max(self, return_value=False):
+    def pop_max(self):
         answer = self.values[0]
         self.size -= 1
         if self.size > 0:
@@ -65,9 +65,7 @@ class Heap:
             self.sift_down(0)
         else:
             self.values.pop()
-        if return_value:
-            return answer
-        print(answer)
+        return answer
 
     def insert(self, n):
         self.values.append(n)
@@ -84,7 +82,7 @@ def main():
         if command.startswith("0"):
             heap.insert(int(command.split()[1]))
         else:
-            heap.pop_max()
+            print(heap.pop_max())
 
 
 if __name__ == "__main__":

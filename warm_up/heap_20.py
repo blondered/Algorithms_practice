@@ -52,7 +52,7 @@ class Heap:
             else:
                 break
 
-    def pop_max(self, return_value=False):
+    def pop_max(self):
         answer = self.values[0]
         self.size -= 1
         if self.size > 0:
@@ -60,9 +60,7 @@ class Heap:
             self.sift_down(0)
         else:
             self.values.pop()
-        if return_value:
-            return answer
-        print(answer)
+        return answer
 
     def insert(self, n):
         self.values.append(n)
@@ -85,8 +83,8 @@ def heapify(numbers):
 def main(numbers):
     heap = heapify(numbers)
     ans = []
-    for i in range(len(numbers)):
-        ans.append(heap.pop_max(return_value=True))
+    for _ in range(len(numbers)):
+        ans.append(heap.pop_max())
     print(*ans[::-1])
 
 
