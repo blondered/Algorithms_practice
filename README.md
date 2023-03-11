@@ -1,1 +1,15 @@
-# Algorithms_practice
+# Практика по алгоритмам и структурам данных
+
+Структуры данных:
+- Бинарное дерево поиска
+- [Стек (LIFO)](yandex_trainings_3/stack_11.py)
+- [Очередь (FIFO)](yandex_trainings_3/queue_16.py)
+- [Дек (Double ended queue)](yandex_trainings_3/queue_18.py)
+- [Куча](yandex_trainings_3/heap_19.py)
+
+Динамическое программирование:
+- Наибольшая общая подпоследовательность
+
+Алгоритмы на графах:
+- Поиск в глубину
+- Поиск в ширину
