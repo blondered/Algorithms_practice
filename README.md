@@ -10,6 +10,8 @@
 Классика:
 - [Бинарный поиск](yandex_trainings_3/warm_up_3.py)
 - [Два указателя](yandex_trainings_3/warm_up_2.py)
+- [Сортировка событий](yandex_trainings_3/warm_up_6.py)
+- [Префиксные суммы](yandex_trainings_3/warm_up_9.py)
 
 Динамическое программирование:
 - [Обобщенные числа Фибоначчи в расчете количества вариантов](yandex_trainings_3/dp_22.py)
