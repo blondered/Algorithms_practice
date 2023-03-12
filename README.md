@@ -32,3 +32,6 @@
 
 Сортировки:
 - [Сортировка кучей](yandex_trainings_3/heap_20.py)
+
+Ссылки:
+https://ru.algorithmica.org/cs/sorting/heapsort/
